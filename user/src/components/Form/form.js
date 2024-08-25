@@ -1,5 +1,6 @@
 // src/pages/FormPage.js
 import React, { useState } from 'react';
+import './form.css';
 
 const FormPage = () => {
   const [formData, setFormData] = useState({
