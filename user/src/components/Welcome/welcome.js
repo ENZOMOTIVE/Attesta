@@ -1,32 +1,17 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './welcome.css'; // Import the CSS file
 
 const WelcomePage = () => {
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h1>Welcome to the University Form Submission</h1>
       <p>Please proceed to the form submission page.</p>
-      <Link to="/form" style={styles.link}>Go to Form</Link>
+      <Link to="/form" className="link">Request Certificate</Link> 
+      <Link to="/display" className="link">Dashboard</Link>
+
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    backgroundColor: '#f0f0f0',
-  },
-  link: {
-    marginTop: '20px',
-    fontSize: '18px',
-    color: '#007bff',
-    textDecoration: 'none',
-  },
 };
 
 export default WelcomePage;
