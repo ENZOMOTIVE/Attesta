@@ -1,5 +1,6 @@
 // src/pages/CreateAttestationsPage.js
 import React, { useState } from 'react';
+import './attestations.css'
 
 const CreateAttestationsPage = () => {
   const [attestationData, setAttestationData] = useState({
