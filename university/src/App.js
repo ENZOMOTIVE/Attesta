@@ -15,21 +15,23 @@ function App() {
   const [walletAddress, setWalletAddress] = useState('');
 
   useEffect(() => {
-    const checkAuthentication = () => {
-      const storedWalletAddress = localStorage.getItem('walletAddress');
-      if (storedWalletAddress) {
-        setWalletAddress(storedWalletAddress);
-        setIsAuthenticated(true);
-      }
-    };
-
-    checkAuthentication();
+    const storedWalletAddress = localStorage.getItem('walletAddress');
+    if (storedWalletAddress) {
+      setWalletAddress(storedWalletAddress);
+      setIsAuthenticated(true);
+    }
   }, []);
 
   const handleLogin = (address) => {
     setWalletAddress(address);
     setIsAuthenticated(true);
     localStorage.setItem('walletAddress', address);
+  };
+
+  const handleLogout = () => {
+    setWalletAddress('');
+    setIsAuthenticated(false);
+    localStorage.removeItem('walletAddress');
   };
 
   return (
@@ -39,21 +41,19 @@ function App() {
           <>
             <Sidebar />
             <div style={styles.content}>
-              <div style={styles.walletAddress}>
-                Connected Wallet: {walletAddress}
-              </div>
               <Routes>
-                <Route path="/" element={<WelcomePage />} />
+                <Route path="/" element={<WelcomePage walletAddress={walletAddress} onLogout={handleLogout} />} />
                 <Route path="/request" element={<RequestPage />} />
                 <Route path="/generate" element={<GenerateCertificatePage />} />
                 <Route path="/attest" element={<CreateAttestationsPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
           </>
         ) : (
           <Routes>
-            <Route path="*" element={<Navigate to="/login" />} />
-            <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+            <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         )}
       </div>
@@ -69,10 +69,6 @@ const styles = {
     marginLeft: '200px', // to account for the sidebar width
     padding: '20px',
     width: '100%',
-  },
-  walletAddress: {
-    marginBottom: '20px',
-    fontWeight: 'bold',
   },
 };
 
