@@ -49,25 +49,32 @@ const RequestPage = () => {
 
   return (
     <div className="notification-container">
-      {requests.map((request, index) => (
-        <div key={index} className="notification-box">
-          <h2>{request.name}</h2>
-          <p>{request.mailId}</p>
-          <button onClick={() => handleToggle(index)} className="view-more-button">
-            {request.expanded ? 'View Less' : 'View More'}
-          </button>
-          <button onClick={() => handleDelete(index)} className="delete-button">
-            Delete
-          </button>
-          {request.expanded && (
-            <div className="notification-details">
-              <p><strong>Branch:</strong> {request.branch}</p>
-              <p><strong>Roll Number:</strong> {request.rollNumber}</p>
-              <p><strong>Registration Number:</strong> {request.registrationNumber}</p>
-            </div>
-          )}
+      {requests.length === 0 ? (
+        <div className="no-notifications">
+          <h2>No Notifications Available</h2>
+          <p>There are currently no requests to display.</p>
         </div>
-      ))}
+      ) : (
+        requests.map((request, index) => (
+          <div key={index} className="notification-box">
+            <h2>{request.name}</h2>
+            <p>{request.mailId}</p>
+            <button onClick={() => handleToggle(index)} className="view-more-button">
+              {request.expanded ? 'View Less' : 'View More'}
+            </button>
+            <button onClick={() => handleDelete(index)} className="delete-button">
+              Delete
+            </button>
+            {request.expanded && (
+              <div className="notification-details">
+                <p><strong>Branch:</strong> {request.branch}</p>
+                <p><strong>Roll Number:</strong> {request.rollNumber}</p>
+                <p><strong>Registration Number:</strong> {request.registrationNumber}</p>
+              </div>
+            )}
+          </div>
+        ))
+      )}
     </div>
   );
 };
