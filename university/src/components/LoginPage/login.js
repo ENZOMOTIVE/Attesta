@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './login.css';
+
 function LoginPage({ onLogin }) {
   const handleConnectWallet = async () => {
     if (window.ethereum) {
@@ -19,9 +21,11 @@ function LoginPage({ onLogin }) {
   };
 
   return (
-    <div>
+    <div className="loginBox">
       <h1>Login or Connect Your Wallet</h1>
-      <button onClick={handleConnectWallet}>Connect Wallet</button>
+      <button className="connectWalletButton" onClick={handleConnectWallet}>
+        Connect Wallet
+      </button>
     </div>
   );
 }

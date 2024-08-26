@@ -36,27 +36,27 @@ function App() {
 
   return (
     <Router>
-      <div style={styles.container}>
-        {isAuthenticated ? (
-          <>
-            <Sidebar />
-            <div style={styles.content}>
-              <Routes>
-                <Route path="/" element={<WelcomePage walletAddress={walletAddress} onLogout={handleLogout} />} />
-                <Route path="/request" element={<RequestPage />} />
-                <Route path="/generate" element={<GenerateCertificatePage />} />
-                <Route path="/attest" element={<CreateAttestationsPage />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
-            </div>
-          </>
-        ) : (
+      {isAuthenticated ? (
+        <div style={styles.container}>
+          <Sidebar />
+          <div style={styles.content}>
+            <Routes>
+              <Route path="/" element={<WelcomePage walletAddress={walletAddress} onLogout={handleLogout} />} />
+              <Route path="/request" element={<RequestPage />} />
+              <Route path="/generate" element={<GenerateCertificatePage />} />
+              <Route path="/attest" element={<CreateAttestationsPage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+        </div>
+      ) : (
+        <div style={styles.centeredContainer}>
           <Routes>
             <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-        )}
-      </div>
+        </div>
+      )}
     </Router>
   );
 }
@@ -69,6 +69,13 @@ const styles = {
     marginLeft: '200px', // to account for the sidebar width
     padding: '20px',
     width: '100%',
+  },
+  centeredContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    backgroundColor: '#f0f0f0',
   },
 };
 
