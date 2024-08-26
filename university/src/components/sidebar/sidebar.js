@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <div style={styles.sidebar}>
       <Link to="/" style={styles.link}>Welcome</Link>
-      <Link to="/request" style={styles.link}>Request Certificate</Link>
+      <Link to="/request" style={styles.link}>Request Notifications</Link>
       <Link to="/generate" style={styles.link}>Generate Certificate</Link>
       <Link to="/attest" style={styles.link}>Create Attestations</Link>
     </div>

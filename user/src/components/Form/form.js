@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import './form.css';
 
 const FormPage = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: '',
     branch: '',
     rollNumber: '',
     registrationNumber: '',
     mailId: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,10 +20,30 @@ const FormPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form Data Submitted:', formData);
+    
+    try {
+      // Send data to university
+      const response = await fetch('http://localhost:3000/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        console.log('Form Data Submitted Successfully');
+        // Clear the form after successful submission
+        setFormData(initialFormData);
+        // Optionally, redirect or inform the user
+      } else {
+        console.error('Failed to submit form data');
+      }
+    } catch (error) {
+      console.error('Error submitting form data:', error);
+    }
   };
 
   return (
@@ -88,6 +110,5 @@ const FormPage = () => {
     </div>
   );
 };
-
 
 export default FormPage;
