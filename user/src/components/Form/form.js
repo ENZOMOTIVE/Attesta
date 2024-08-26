@@ -25,102 +25,69 @@ const FormPage = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h1>Form Submission</h1>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>
+      <form onSubmit={handleSubmit} className="form">
+        <label className="label">
           Name:
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            style={styles.input}
+            className="input"
             required
           />
         </label>
-        <label style={styles.label}>
+        <label className="label">
           Branch:
           <input
             type="text"
             name="branch"
             value={formData.branch}
             onChange={handleChange}
-            style={styles.input}
+            className="input"
             required
           />
         </label>
-        <label style={styles.label}>
+        <label className="label">
           Roll Number:
           <input
             type="text"
             name="rollNumber"
             value={formData.rollNumber}
             onChange={handleChange}
-            style={styles.input}
+            className="input"
             required
           />
         </label>
-        <label style={styles.label}>
+        <label className="label">
           Registration Number:
           <input
             type="text"
             name="registrationNumber"
             value={formData.registrationNumber}
             onChange={handleChange}
-            style={styles.input}
+            className="input"
             required
           />
         </label>
-        <label style={styles.label}>
+        <label className="label">
           Mail ID:
           <input
             type="email"
             name="mailId"
             value={formData.mailId}
             onChange={handleChange}
-            style={styles.input}
+            className="input"
             required
           />
         </label>
-        <button type="submit" style={styles.button}>Submit</button>
+        <button type="submit" className="button">Submit</button>
       </form>
     </div>
   );
 };
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    backgroundColor: '#ffffff',
-  },
-  form: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  label: {
-    marginBottom: '10px',
-  },
-  input: {
-    width: '100%',
-    padding: '8px',
-    marginBottom: '10px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-  },
-  button: {
-    padding: '10px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-};
 
 export default FormPage;
