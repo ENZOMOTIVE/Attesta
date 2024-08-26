@@ -25,6 +25,28 @@ const RequestPage = () => {
     setRequests(updatedRequests);
   };
 
+  const handleDelete = async (index) => {
+    try {
+      const requestToDelete = requests[index];
+      const response = await fetch('http://localhost:3000/api/delete-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestToDelete),
+      });
+
+      if (response.ok) {
+        const updatedRequests = requests.filter((_, i) => i !== index);
+        setRequests(updatedRequests);
+      } else {
+        console.error('Failed to delete form data');
+      }
+    } catch (error) {
+      console.error('Error deleting form data:', error);
+    }
+  };
+
   return (
     <div className="notification-container">
       {requests.map((request, index) => (
@@ -33,6 +55,9 @@ const RequestPage = () => {
           <p>{request.mailId}</p>
           <button onClick={() => handleToggle(index)} className="view-more-button">
             {request.expanded ? 'View Less' : 'View More'}
+          </button>
+          <button onClick={() => handleDelete(index)} className="delete-button">
+            Delete
           </button>
           {request.expanded && (
             <div className="notification-details">

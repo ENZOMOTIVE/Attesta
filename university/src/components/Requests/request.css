@@ -29,7 +29,8 @@
     color: #555;
   }
   
-  .view-more-button {
+  .view-more-button,
+  .delete-button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -39,8 +40,18 @@
     border-radius: 5px;
   }
   
-  .view-more-button:hover {
+  .view-more-button:hover,
+  .delete-button:hover {
     background-color: #0056b3;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    margin-left: 10px;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
   }
   
   .notification-details {
