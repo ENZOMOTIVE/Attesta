@@ -1,13 +1,3 @@
-# Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+# Attesta: Educational Credential issue platform
+The Smart Contract is Deployed on Open Campus Codex Sepolia Network
+**Contract Deploy address** : 0x3ded9addbf7c46db95bd9faa339d0595c17557ad 
