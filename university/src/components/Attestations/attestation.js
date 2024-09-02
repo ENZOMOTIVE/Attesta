@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
-import { ethers } from 'ethers';
 import './attestations.css';
+import { ethers } from 'ethers';
+import { SignProtocolClient, SpMode, EvmChains } from '@ethsign/sp-sdk';
+
+// Initialize provider
+const provider = new ethers.providers.JsonRpcProvider('https://alfajores-forno.celo-testnet.org');
+
+// Initialize client with MetaMask or other provider (not using private key here)
+const client = new SignProtocolClient(SpMode.OnChain, {
+  chain: EvmChains.celoAlfajores,
+  // You can pass the wallet instance if necessary here, but if using MetaMask, it's not required
+});
 
 const CreateAttestationsPage = () => {
   const [attestationData, setAttestationData] = useState({
@@ -8,217 +18,77 @@ const CreateAttestationsPage = () => {
     branch: '',
     rollNumber: '',
     registrationNumber: '',
-    mailId: '',
     issueDate: '',
     certificateImageHash: '',
   });
   const [transactionHash, setTransactionHash] = useState('');
 
   const handleChange = (e) => {
-    setAttestationData({
-      ...attestationData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    if ((name === 'rollNumber' || name === 'registrationNumber') && isNaN(value)) {
+      alert(`${name} should be a number.`);
+      return;
+    }
+
+    setAttestationData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleCreateAttestation = async () => {
     try {
+      // Check for MetaMask
       if (!window.ethereum) {
-        alert('Please install MetaMask!');
+        alert('MetaMask is not installed!');
         return;
       }
 
-      // Request account access
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-      // Initialize provider and signer
+      // Create provider and signer
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
+      const signerAddress = await signer.getAddress();
 
-      // Define the smart contract address and ABI
-      const contractAddress = '0x3ded9addbf7c46db95bd9faa339d0595c17557ad';
-      const contractABI = [
-        {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "uint256",
-              "name": "attestationId",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "branch",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "rollNumber",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "registrationNumber",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "issueDate",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "certificateImageHash",
-              "type": "string"
-            }
-          ],
-          "name": "AttestationCreated",
-          "type": "event"
+      // Validate form data
+      const { name, branch, rollNumber, registrationNumber, issueDate, certificateImageHash } = attestationData;
+      if (!name || !branch || !rollNumber || !registrationNumber || !issueDate || !certificateImageHash) {
+        alert('All fields are required!');
+        return;
+      }
+
+      // Create attestation
+      const res = await client.createAttestation({
+        schemaId: '0x1b', // Ensure this is the correct schema ID
+        data: {
+          name,
+          branch,
+          rollNumber,
+          registrationNumber,
+          issueDate,
+          certificateImageHash,
         },
-        {
-          "inputs": [],
-          "name": "attestationCount",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "name": "attestations",
-          "outputs": [
-            {
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "branch",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "rollNumber",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "registrationNumber",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "issueDate",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "certificateImageHash",
-              "type": "string"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "string",
-              "name": "_name",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "_branch",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "_rollNumber",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "_registrationNumber",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "_issueDate",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "_certificateImageHash",
-              "type": "string"
-            }
-          ],
-          "name": "createAttestation",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        }
-      ];
+        indexingValue: signerAddress.toLowerCase()
+      });
 
-      // Initialize the contract
-      const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      // Handle response
+      console.log('Create Attestation Response:', res);
+      setTransactionHash(res.transactionHash);
+      alert('Attestation created successfully!');
 
-      // Send transaction to create attestation
-      const tx = await contract.createAttestation(
-        attestationData.name,
-        attestationData.branch,
-        attestationData.rollNumber,
-        attestationData.registrationNumber,
-        attestationData.issueDate,
-        attestationData.certificateImageHash
-      );
-
-      // Wait for transaction to be mined
-      const receipt = await tx.wait();
-
-      // Set transaction hash
-      setTransactionHash(receipt.transactionHash);
-
-      console.log('Transaction Hash:', receipt.transactionHash);
     } catch (error) {
-      console.error('Error creating attestation:', error);
+      console.error('Error creating attestation:', error.message);
+      alert('Failed to create attestation. Please try again.');
     }
   };
 
   return (
     <div className="container">
       <h1>Create Attestation</h1>
-      <form className="form">
+      <form className="form" onSubmit={(e) => {
+        e.preventDefault(); // Prevent the default form submission
+        handleCreateAttestation();
+      }}>
         <label className="label">
           Name:
           <input
@@ -285,13 +155,13 @@ const CreateAttestationsPage = () => {
             required
           />
         </label>
-        <button type="button" onClick={handleCreateAttestation} className="button">
+        <button type="submit" className="button">
           Create Attestation
         </button>
       </form>
       {transactionHash && (
-        <div className="transaction-hash">
-          <p>Transaction successful! Hash: {transactionHash}</p>
+        <div className="transaction">
+          <p>Transaction Hash: {transactionHash}</p>
         </div>
       )}
     </div>
