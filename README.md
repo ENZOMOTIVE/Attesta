@@ -19,5 +19,7 @@ Attesta is an advanced Certificate Attestation System designed to revolutionize 
 - **Network:** The Smart Contract is Deployed on Open Campus Codex Sepolia Network
 - **Contract Address:** 0x3ded9addbf7c46db95bd9faa339d0595c17557ad 
 
+## Workflow:
+![Architecture diagram](https://github.com/user-attachments/assets/7ead14ef-6b41-450d-8d9a-a4f4e525cf9d)
 
 
