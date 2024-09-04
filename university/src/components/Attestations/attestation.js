@@ -36,51 +36,54 @@ const CreateAttestationsPage = () => {
       [name]: value,
     }));
   };
-
   const handleCreateAttestation = async () => {
     try {
-      // Check for MetaMask
-      if (!window.ethereum) {
-        alert('MetaMask is not installed!');
-        return;
-      }
+        // Check for MetaMask
+        if (!window.ethereum) {
+            alert('MetaMask is not installed!');
+            return;
+        }
 
-      // Create provider and signer
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const signerAddress = await signer.getAddress();
+        // Request account access if needed
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-      // Validate form data
-      const { name, branch, rollNumber, registrationNumber, issueDate, certificateImageHash } = attestationData;
-      if (!name || !branch || !rollNumber || !registrationNumber || !issueDate || !certificateImageHash) {
-        alert('All fields are required!');
-        return;
-      }
+        // Create provider and signer
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const signerAddress = await signer.getAddress();
 
-      // Create attestation
-      const res = await client.createAttestation({
-        schemaId: '0x1b', // Ensure this is the correct schema ID
-        data: {
-          name,
-          branch,
-          rollNumber,
-          registrationNumber,
-          issueDate,
-          certificateImageHash,
-        },
-        indexingValue: signerAddress.toLowerCase()
-      });
+        // Validate form data
+        const { name, branch, rollNumber, registrationNumber, issueDate, certificateImageHash } = attestationData;
+        if (!name || !branch || !rollNumber || !registrationNumber || !issueDate || !certificateImageHash) {
+            alert('All fields are required!');
+            return;
+        }
 
-      // Handle response
-      console.log('Create Attestation Response:', res);
-      setTransactionHash(res.transactionHash);
-      alert('Attestation created successfully!');
+        // Create attestation
+        const res = await client.createAttestation({
+            schemaId: '0x1b', // Ensure this is the correct schema ID
+            data: {
+                name,
+                branch,
+                rollNumber,
+                registrationNumber,
+                issueDate,
+                certificateImageHash,
+            },
+            indexingValue: signerAddress.toLowerCase()
+        });
+
+        // Handle response
+        console.log('Create Attestation Response:', res);
+        setTransactionHash(res.transactionHash);
+        alert('Attestation created successfully!');
 
     } catch (error) {
-      console.error('Error creating attestation:', error.message);
-      alert('Failed to create attestation. Please try again.');
+        console.error('Error creating attestation:', error.message);
+        alert('Failed to create attestation. Please try again.');
     }
-  };
+};
+
 
   return (
     <div className="container">
