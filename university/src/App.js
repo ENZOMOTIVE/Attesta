@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react' ;
+import { useState, useEffect } from 'react';
 
 // Linking to the pages
 import WelcomePage from './components/Welcome/welcome';
 import RequestPage from './components/Requests/requestPage';
 import GenerateCertificatePage from './components/Generate/generate';
 import CreateAttestationsPage from './components/Attestations/attestation';
+import NewPage from './components/query/QueryAttestationsPage';  // Import the new component
+
 import Sidebar from './components/sidebar/sidebar';
 import LoginPage from './components/LoginPage/login';
 
@@ -45,6 +47,8 @@ function App() {
               <Route path="/request" element={<RequestPage />} />
               <Route path="/generate" element={<GenerateCertificatePage />} />
               <Route path="/attest" element={<CreateAttestationsPage />} />
+              
+              <Route path="/newpage" element={<NewPage />} /> 
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
@@ -66,7 +70,7 @@ const styles = {
     display: 'flex',
   },
   content: {
-    marginLeft: '200px', // to account for the sidebar width
+    marginLeft: '200px',
     padding: '20px',
     width: '100%',
   },

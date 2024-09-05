@@ -8,6 +8,8 @@ const Sidebar = () => {
       <Link to="/request" style={styles.link}>Request Notifications</Link>
       <Link to="/generate" style={styles.link}>Generate Certificate</Link>
       <Link to="/attest" style={styles.link}>Create Attestations</Link>
+      
+      <Link to="/newpage" style={styles.link}>New Page</Link> 
     </div>
   );
 };
