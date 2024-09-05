@@ -20,6 +20,7 @@ const CreateAttestationsPage = () => {
     registrationNumber: '',
     issueDate: '',
     certificateImageHash: '',
+    recipient: '', // New field for recipient's address
   });
   const [transactionHash, setTransactionHash] = useState('');
 
@@ -36,54 +37,61 @@ const CreateAttestationsPage = () => {
       [name]: value,
     }));
   };
+
   const handleCreateAttestation = async () => {
     try {
-        // Check for MetaMask
-        if (!window.ethereum) {
-            alert('MetaMask is not installed!');
-            return;
-        }
+      // Check for MetaMask
+      if (!window.ethereum) {
+        alert('MetaMask is not installed!');
+        return;
+      }
 
-        // Request account access if needed
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
+      // Request account access if needed
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-        // Create provider and signer
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const signerAddress = await signer.getAddress();
+      // Create provider and signer
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const signerAddress = await signer.getAddress();
 
-        // Validate form data
-        const { name, branch, rollNumber, registrationNumber, issueDate, certificateImageHash } = attestationData;
-        if (!name || !branch || !rollNumber || !registrationNumber || !issueDate || !certificateImageHash) {
-            alert('All fields are required!');
-            return;
-        }
+      // Validate form data
+      const { name, branch, rollNumber, registrationNumber, issueDate, certificateImageHash, recipient } = attestationData;
+      if (!name || !branch || !rollNumber || !registrationNumber || !issueDate || !certificateImageHash || !recipient) {
+        alert('All fields are required!');
+        return;
+      }
 
-        // Create attestation
-        const res = await client.createAttestation({
-            schemaId: '0x1b', // Ensure this is the correct schema ID
-            data: {
-                name,
-                branch,
-                rollNumber,
-                registrationNumber,
-                issueDate,
-                certificateImageHash,
-            },
-            indexingValue: signerAddress.toLowerCase()
-        });
+      // Validate recipient address
+      if (!ethers.utils.isAddress(recipient)) {
+        alert('Invalid recipient address');
+        return;
+      }
 
-        // Handle response
-        console.log('Create Attestation Response:', res);
-        setTransactionHash(res.transactionHash);
-        alert('Attestation created successfully!');
+      // Create attestation
+      const res = await client.createAttestation({
+        schemaId: '0x20', // Ensure this is the correct schema ID
+        data: {
+          name,
+          branch,
+          rollNumber,
+          registrationNumber,
+          issueDate,
+          certificateImageHash,
+          recipient, // Include recipient in the attestation data
+        },
+        indexingValue: recipient.toLowerCase(), // Use recipient's address as indexing value
+      });
+
+      // Handle response
+      console.log('Create Attestation Response:', res);
+      setTransactionHash(res.transactionHash);
+      alert('Attestation created successfully!');
 
     } catch (error) {
-        console.error('Error creating attestation:', error.message);
-        alert('Failed to create attestation. Please try again.');
+      console.error('Error creating attestation:', error.message);
+      alert('Failed to create attestation. Please try again.');
     }
-};
-
+  };
 
   return (
     <div className="container">
@@ -153,6 +161,17 @@ const CreateAttestationsPage = () => {
             type="text"
             name="certificateImageHash"
             value={attestationData.certificateImageHash}
+            onChange={handleChange}
+            className="input"
+            required
+          />
+        </label>
+        <label className="label">
+          Recipient Address:
+          <input
+            type="text"
+            name="recipient"
+            value={attestationData.recipient}
             onChange={handleChange}
             className="input"
             required
