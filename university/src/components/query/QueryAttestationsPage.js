@@ -38,7 +38,7 @@ const QueryAttestationsPage = () => {
     try {
       const params = {
         mode: "onchain",
-        schemaId: "0x1b", // Replace with your actual schema ID
+        schemaId: "onchain_evm_44787_0x20", // Replace with your actual schema ID
         ...(queryData.indexingValue && { indexingValue: queryData.indexingValue.toLowerCase() }),
         ...(queryData.attestationId && { attestationId: queryData.attestationId }),
         ...(queryData.transactionHash && { transactionHash: queryData.transactionHash }),
