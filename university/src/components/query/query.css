@@ -1,100 +1,135 @@
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Title */
+h2 {
+  text-align: center;
+  color: #4a4a4a;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* Form Styling */
+form {
+  width: 90%;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #0069d9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #004bb7;
+}
+
+/* Query Results Styling */
+.query-results {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.query-results h3 {
+  font-size: 24px;
+  color: #0069d9;
+  margin-bottom: 15px;
+}
+
+.query-results p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333;
+  word-wrap: break-word; /* Ensures no text overflow */
+}
+
+/* Attestation Item Styling */
+.attestation-item {
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attestation-item:last-child {
+  border-bottom: none;
+}
+
+.attestation-item p {
+  font-size: 16px;
+  color: #4a4a4a;
+  margin: 5px 0;
+  word-wrap: break-word; /* Prevents overflow */
+}
+
+/* Success and Error Messages */
+.success-message {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form, .query-results {
+      width: 95%;
+      padding: 20px;
   }
-  
+
   h2 {
-    text-align: center;
-    color: #333;
-    margin-top: 20px;
-    font-size: 28px;
+      font-size: 28px;
   }
-  
-  /* Form Styling */
-  form {
-    width: 80%;
-    max-width: 600px;
-    margin: 30px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: block;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 8px;
-    margin-top: 12px;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-  }
-  
-  button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Query Results Styling */
-  .query-results {
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+
   .query-results h3 {
-    font-size: 22px;
-    color: #007bff;
-    margin-bottom: 15px;
+      font-size: 20px;
   }
-  
-  .query-results p {
-    font-size: 16px;
-    margin: 8px 0;
-    color: #333;
-  }
-  
-  .attestation-item {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
-  }
-  
-  .attestation-item:last-child {
-    border-bottom: none;
-  }
-  
-  /* Success and Error Messages */
-  .success-message {
-    color: green;
-  }
-  
-  .error-message {
-    color: red;
-  }
-  
+}
