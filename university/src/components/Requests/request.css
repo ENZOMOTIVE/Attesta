@@ -1,62 +1,116 @@
-/* src/pages/notifications.css */
+/* General Layout */
 .notification-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* No Notifications */
+.no-notifications {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.no-notifications h2 {
+  font-size: 2rem;
+  color: #555;
+}
+
+.no-notifications p {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* Notification Box Styling */
+.notification-box {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.notification-box:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.notification-box h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.notification-box p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.notification-details {
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.notification-details p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.notification-details strong {
+  font-weight: 600;
+}
+
+/* Button Styling */
+.view-more-button,
+.delete-button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 0.8rem;
+  width: 26%;
+}
+
+.view-more-button {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.view-more-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #ff4757;
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background-color: #e63946;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .notification-box {
-    width: 80%;
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
+    width: 100%;
+    padding: 1rem;
   }
-  
-  .notification-box h2 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #333;
-  }
-  
-  .notification-box p {
-    margin: 0;
-    font-size: 1em;
-    color: #555;
-  }
-  
-  .view-more-button,
+
+  .view-more-button, 
   .delete-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
-  
-  .view-more-button:hover,
-  .delete-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-    margin-left: 10px;
-  }
-  
-  .delete-button:hover {
-    background-color: #c82333;
-  }
-  
-  .notification-details {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #ddd;
-  }
-  
+}

@@ -1,116 +1,100 @@
 /* General Layout */
-.notification-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 2rem;
-  background-color: #f4f4f9;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  box-sizing: border-box;
 }
 
-/* No Notifications */
-.no-notifications {
+h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
-  margin-top: 5rem;
-}
-
-.no-notifications h2 {
-  font-size: 2rem;
-  color: #555;
-}
-
-.no-notifications p {
-  font-size: 1.2rem;
-  color: #888;
-}
-
-/* Notification Box Styling */
-.notification-box {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  transition: box-shadow 0.3s ease;
-}
-
-.notification-box:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.notification-box h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.notification-box p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.notification-details {
-  margin-top: 1rem;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-.notification-details p {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.notification-details strong {
   font-weight: 600;
 }
 
-/* Button Styling */
-.view-more-button,
-.delete-button {
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 0.8rem;
-  width: 26%;
+/* Form Styling */
+.form {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px; /* Wider form for better use of space */
+  box-sizing: border-box;
 }
 
-.view-more-button {
+.label {
+  display: block;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem; /* Increased padding for better appearance */
+  margin-bottom: 1.5rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.button {
+  width: 100%;
+  padding: 1rem;
   background-color: #007bff;
-  color: #ffffff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.view-more-button:hover {
+.button:hover {
   background-color: #0056b3;
+  transform: scale(1.02); /* Slight grow effect on hover */
 }
 
-.delete-button {
-  background-color: #ff4757;
-  color: #ffffff;
+/* Transaction Hash Styling */
+.transaction {
+  margin-top: 2rem;
+  text-align: center;
 }
 
-.delete-button:hover {
-  background-color: #e63946;
+.transaction p {
+  font-size: 1.1rem;
+  color: #333;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .notification-box {
-    width: 100%;
-    padding: 1rem;
+  .form {
+    width: 90%;
+    padding: 1.5rem;
   }
 
-  .view-more-button, 
-  .delete-button {
-    width: 100%;
-    margin-bottom: 0.5rem;
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button {
+    font-size: 1rem;
   }
 }
