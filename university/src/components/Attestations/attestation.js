@@ -22,6 +22,13 @@ const CreateAttestationsPage = () => {
     certificateImageHash: '',
     recipient: '', // New field for recipient's address
   });
+  
+  // State to hold the attestation response data
+  const [attestationResponse, setAttestationResponse] = useState({
+    attestationId: '',
+    txHash: '',
+    indexingValue: ''
+  });
   const [transactionHash, setTransactionHash] = useState('');
 
   const handleChange = (e) => {
@@ -84,7 +91,12 @@ const CreateAttestationsPage = () => {
 
       // Handle response
       console.log('Create Attestation Response:', res);
-      setTransactionHash(res.transactionHash);
+      setAttestationResponse({
+        attestationId: res.attestationId || '',
+        txHash: res.txHash || '',
+        indexingValue: res.indexingValue || ''
+      });
+      setTransactionHash(res.transactionHash || '');
       alert('Attestation created successfully!');
 
     } catch (error) {
@@ -181,9 +193,20 @@ const CreateAttestationsPage = () => {
           Create Attestation
         </button>
       </form>
+
       {transactionHash && (
         <div className="transaction">
           <p>Transaction Hash: {transactionHash}</p>
+        </div>
+      )}
+
+      {/* Display attestation response data */}
+      {attestationResponse.attestationId && (
+        <div className="attestation-response">
+          <h2>Attestation Created</h2>
+          <p><strong>Attestation ID:</strong> {attestationResponse.attestationId}</p>
+          <p><strong>Transaction Hash:</strong> {attestationResponse.txHash}</p>
+          <p><strong>Indexing Value:</strong> {attestationResponse.indexingValue}</p>
         </div>
       )}
     </div>
