@@ -2,7 +2,7 @@
 
 
 ## Introduction
-Attesta is an advanced Certificate Attestation System designed to revolutionize the way academic and professional credentials are issued, managed, and verified. Built on the Open Campus Sepolia network and deployed by DRPC (Distributed Records and Proof of Credentials), Attesta ensures the creation of immutable and tamper-proof records for certificates issued by educational institutions and professional bodies. The system guarantees the authenticity and trustworthiness of these credentials, providing a secure and transparent platform for credential management.
+Attesta is a cutting-edge Certificate Attestation System designed to transform the management, issuance, and verification of academic and professional credentials. Built on the Celo Alfajores Network and deployed by DRPC (Distributed Records and Proof of Credentials), Attesta leverages blockchain technology to create immutable and tamper-proof records for certificates issued by educational institutions and professional organizations. By utilizing the Sign Protocol for schema creation and attestations through its SDK, the system ensures the secure and efficient handling of credentials. This solution guarantees the authenticity and trustworthiness of credentials, providing a transparent and decentralized platform for managing them in a secure manner.
 
 ## Workflow:
 ![Architecture diagram](https://github.com/user-attachments/assets/7ead14ef-6b41-450d-8d9a-a4f4e525cf9d)
