@@ -2,7 +2,10 @@
 
 
 ## Introduction
-Attesta is an advanced Certificate Attestation System designed to revolutionize the way academic and professional credentials are issued, managed, and verified. Built on the Open Campus Sepolia network and deployed by DRPC (Distributed Records and Proof of Credentials), Attesta ensures the creation of immutable and tamper-proof records for certificates issued by educational institutions and professional bodies. The system guarantees the authenticity and trustworthiness of these credentials, providing a secure and transparent platform for credential management.
+Attesta is a cutting-edge Certificate Attestation System designed to transform the management, issuance, and verification of academic and professional credentials. Built on the Celo Alfajores Network and deployed by DRPC (Distributed Records and Proof of Credentials), Attesta leverages blockchain technology to create immutable and tamper-proof records for certificates issued by educational institutions and professional organizations. By utilizing the Sign Protocol for schema creation and attestations through its SDK, the system ensures the secure and efficient handling of credentials. This solution guarantees the authenticity and trustworthiness of credentials, providing a transparent and decentralized platform for managing them in a secure manner.
+
+## Workflow:
+![Architecture diagram](https://github.com/user-attachments/assets/7ead14ef-6b41-450d-8d9a-a4f4e525cf9d)
 
 
 ## Key Features
@@ -11,15 +14,24 @@ Attesta is an advanced Certificate Attestation System designed to revolutionize 
   
 - **Credential Management**
   
-- **Contract deployed using Blockscout**
+- **Sign Protocol for Schema Management**
   
-- **Society Welfare** 
+- **Issuance** 
 
-## Smart Contract
-- **Network:** The Smart Contract is Deployed on Open Campus Codex Sepolia Network
-- **Contract Address:** 0x3ded9addbf7c46db95bd9faa339d0595c17557ad 
+## Sign Protocol Info
+- **Schema ID:** onchain_evm_44787_0x20
+- **Screenshot:Schema and Attestations** ![image](https://github.com/user-attachments/assets/db5ae55c-ab4a-40be-8b94-e6ff7f30ecc1)
 
-## Workflow:
-![Architecture diagram](https://github.com/user-attachments/assets/7ead14ef-6b41-450d-8d9a-a4f4e525cf9d)
+## App Screenshots:
+## University Interface: Landing Page 
+  ![image](https://github.com/user-attachments/assets/85701649-9caf-4576-9769-e9a4ad0970e0)
+  ## Upload Certificates
+  ![image](https://github.com/user-attachments/assets/b39dae4d-ea89-4711-b360-fed43ab13ebd)
+  ## Create Attestations
+  ![image](https://github.com/user-attachments/assets/83f86168-9dcb-48fa-83c1-bdfe55333308)
+## Query Attestations
+  ![image](https://github.com/user-attachments/assets/100573b0-308e-428a-b202-526a8dc818c4)
+
+
 
 
