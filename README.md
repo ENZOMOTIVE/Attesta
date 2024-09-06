@@ -23,13 +23,13 @@ Attesta is a cutting-edge Certificate Attestation System designed to transform t
 - **Screenshot:Schema and Attestations** ![image](https://github.com/user-attachments/assets/db5ae55c-ab4a-40be-8b94-e6ff7f30ecc1)
 
 ## App Screenshots:
-- ** University Interface: Landing Page **
+## University Interface: Landing Page 
   ![image](https://github.com/user-attachments/assets/85701649-9caf-4576-9769-e9a4ad0970e0)
-- ** Upload Certificates **
+  ## Upload Certificates
   ![image](https://github.com/user-attachments/assets/b39dae4d-ea89-4711-b360-fed43ab13ebd)
-- ** Create Attestations **
+  ## Create Attestations
   ![image](https://github.com/user-attachments/assets/83f86168-9dcb-48fa-83c1-bdfe55333308)
-- ** Query Attestations **
+## Query Attestations
   ![image](https://github.com/user-attachments/assets/100573b0-308e-428a-b202-526a8dc818c4)
 
 
