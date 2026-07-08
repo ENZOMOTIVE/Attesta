@@ -1,91 +1,37 @@
-# Attesta
-
-> Attesta is an educational credential issuance platform where organizations can generate blockchain-backed credentials with EduChain.
-
-## The Story
-
-Attesta starts with a simple goal: keep the product experience and the service layer visible in one place. Its shape tells the same story: the product interface and the service layer live close enough together that a maintainer can see the project as a whole before diving into individual folders.
-
-## Detailed Description
-
-Attesta is an educational credential issuance platform where organizations can generate blockchain-backed credentials with EduChain. This README is meant to explain the project like a handoff note: what the idea is, why the repository exists, and how someone can start working with it without opening every file first.
-
-The project has both a product surface and a service surface. Good documentation should show how the UI, API, data flow, and local scripts work together so someone can run the whole experience end to end.
-
-At the top level, the most important entry points are `Architecture diagram.png`, `university`, and `user`. Together they show the current boundary of the project and make it easier to separate product code, support files, documentation, and experiments.
-
-The declared Node surfaces include `university` (scripts: `start`, `build`, `test`, `eject`, `postinstall`) and `user` (scripts: `start`, `build`, `test`, `eject`). Those package files are the best starting points for understanding how the app runs, builds, or validates itself.
-
-The visible stack currently points to `React`, `Express`, `Node.js`, `JavaScript`, `HTML`, and `CSS`. Keep this list honest as the project changes so the README remains useful as a first technical map.
-
-## What It Includes
-
-- A user-facing surface for the product, demo, dashboard, or static experience.
-- A service layer for APIs, realtime behavior, bot logic, or server-side workflows.
-
-## How It Is Put Together
-
-| Path | Role |
-| --- | --- |
-| `.gitignore` | ignored local, dependency, and build files |
-| `Architecture diagram.png` | project file or folder |
-| `university` | project file or folder |
-| `user` | project file or folder |
-
-## Local Development
-
-```bash
-git clone https://github.com/ENZOMOTIVE/Attesta.git
-cd Attesta
-```
-
-```bash
-cd university
-npm install
-npm start
-```
-
-```bash
-cd user
-npm install
-npm start
-```
-
-## Command Surface
-
-| Area | Commands |
-| --- | --- |
-| `university/package.json` | `start`, `build`, `test`, `eject`, `postinstall` |
-| `user/package.json` | `start`, `build`, `test`, `eject` |
-
-## Configuration
-
-- Document API ports, database URLs, third-party credentials, and service endpoints in `.env.example` before deployment.
-- Keep wallet private keys, RPC URLs, mnemonics, and contract secrets outside version control.
-
-## Quality Checks
-
-- From `university`, run `npm test`.
-- From `university`, run `npm run build`.
-- From `user`, run `npm test`.
-- From `user`, run `npm run build`.
-
-## Where To Take It Next
-
-- Add screenshots or a short user flow so visitors can see the interface before running it.
-- Document the main API routes, bot events, or service responsibilities with example inputs and outputs.
-- Keep setup commands current whenever dependencies, scripts, or deployment targets change.
-- Record important product decisions here so the repository keeps its story as the code evolves.
-
-## Project Metadata
-
-| Field | Details |
-| --- | --- |
-| Repository | `ENZOMOTIVE/Attesta` |
-| Categories | `Full Stack`, `Protocol` |
-| Primary stack | React, Express, Node.js, JavaScript, HTML, CSS |
+# Attesta: Digital Credential Issuer for University
 
 
-## License
+## Introduction
+Attesta is a cutting-edge Certificate Attestation System designed to transform the management, issuance, and verification of academic and professional credentials. Built on the Celo Alfajores Network and deployed by DRPC (Distributed Records and Proof of Credentials), Attesta leverages blockchain technology to create immutable and tamper-proof records for certificates issued by educational institutions and professional organizations. By utilizing the Sign Protocol for schema creation and attestations through its SDK, the system ensures the secure and efficient handling of credentials. This solution guarantees the authenticity and trustworthiness of credentials, providing a transparent and decentralized platform for managing them in a secure manner.
 
-No license file is currently committed. Add one before distributing this project publicly.
+## Workflow:
+![Architecture diagram](https://github.com/user-attachments/assets/7ead14ef-6b41-450d-8d9a-a4f4e525cf9d)
+
+
+## Key Features
+
+- **Secure Digital Credential Generation**
+  
+- **Credential Management**
+  
+- **Sign Protocol for Schema Management**
+  
+- **Issuance** 
+
+## Sign Protocol Info
+- **Schema ID:** onchain_evm_44787_0x20
+- **Screenshot:Schema and Attestations** ![image](https://github.com/user-attachments/assets/db5ae55c-ab4a-40be-8b94-e6ff7f30ecc1)
+
+## App Screenshots:
+## University Interface: Landing Page 
+  ![image](https://github.com/user-attachments/assets/85701649-9caf-4576-9769-e9a4ad0970e0)
+  ## Upload Certificates
+  ![image](https://github.com/user-attachments/assets/b39dae4d-ea89-4711-b360-fed43ab13ebd)
+  ## Create Attestations
+  ![image](https://github.com/user-attachments/assets/83f86168-9dcb-48fa-83c1-bdfe55333308)
+## Query Attestations
+  ![image](https://github.com/user-attachments/assets/100573b0-308e-428a-b202-526a8dc818c4)
+
+
+
+
