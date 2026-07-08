@@ -1,43 +1,26 @@
 # Attesta
 
-## Project Tags
+> Attesta is a full-stack project with a visible product surface and supporting service layer.
 
-- `Full Stack`
-- `Protocol`
+## The Story
 
-## Overview
+Attesta starts with a simple goal: keep the product experience and the service layer visible in one place. Its shape tells the same story: the product interface and the service layer live close enough together that a maintainer can see the project as a whole before diving into individual folders.
 
-Attesta is a full-stack application with separate frontend and backend pieces.
+## What It Includes
 
-## Features
+- A user-facing surface for the product, demo, dashboard, or static experience.
+- A service layer for APIs, realtime behavior, bot logic, or server-side workflows.
 
-- User-facing frontend or app interface
-- Backend service, API, websocket, bot, or server workflow
+## How It Is Put Together
 
-## Tech Stack
+| Path | Role |
+| --- | --- |
+| `.gitignore` | ignored local, dependency, and build files |
+| `Architecture diagram.png` | project file or folder |
+| `university` | project file or folder |
+| `user` | project file or folder |
 
-- React
-- Express
-- Node.js
-- JavaScript
-- HTML
-- CSS
-
-## Project Structure
-
-- `.gitignore` - project file or directory
-- `Architecture diagram.png` - project file or directory
-- `university` - project file or directory
-- `user` - project file or directory
-
-## Getting Started
-
-### Prerequisites
-
-- Git
-- Node.js 18+
-
-### Setup and Run
+## Local Development
 
 ```bash
 git clone https://github.com/ENZOMOTIVE/Attesta.git
@@ -56,33 +39,40 @@ npm install
 npm start
 ```
 
-## Commands
+## Command Surface
 
-- `university/package.json`: `start`, `build`, `test`, `eject`, `postinstall`
-- `user/package.json`: `start`, `build`, `test`, `eject`
+| Area | Commands |
+| --- | --- |
+| `university/package.json` | `start`, `build`, `test`, `eject`, `postinstall` |
+| `user/package.json` | `start`, `build`, `test`, `eject` |
 
 ## Configuration
 
-- Document required service ports, database URLs, and API credentials before deployment.
+- Document API ports, database URLs, third-party credentials, and service endpoints in `.env.example` before deployment.
+- Keep wallet private keys, RPC URLs, mnemonics, and contract secrets outside version control.
 
-## Testing and Quality
+## Quality Checks
 
 - From `university`, run `npm test`.
 - From `university`, run `npm run build`.
 - From `user`, run `npm test`.
 - From `user`, run `npm run build`.
 
-## Documentation Notes
+## Where To Take It Next
 
-- Keep this README aligned with the actual source layout and commands.
-- Add screenshots, API examples, contract addresses, or deployment links when they become stable.
-- Update the project tags when the scope changes.
+- Add screenshots or a short user flow so visitors can see the interface before running it.
+- Document the main API routes, bot events, or service responsibilities with example inputs and outputs.
+- Keep setup commands current whenever dependencies, scripts, or deployment targets change.
+- Record important product decisions here so the repository keeps its story as the code evolves.
 
-## Contributing
+## Project Metadata
 
-1. Create a focused branch for the change.
-2. Update code and documentation together.
-3. Run the relevant checks before opening a pull request.
+| Field | Details |
+| --- | --- |
+| Repository | `ENZOMOTIVE/Attesta` |
+| Categories | `Full Stack`, `Protocol` |
+| Primary stack | React, Express, Node.js, JavaScript, HTML, CSS |
+
 
 ## License
 
